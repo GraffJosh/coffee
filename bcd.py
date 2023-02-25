@@ -28,9 +28,10 @@ class BCD:
         bit_2 = GPIO.input(self.pin_bit_2)
         bit_4 = GPIO.input(self.pin_bit_4)
         bit_8 = GPIO.input(self.pin_bit_8)
+        curr_value = bit_8 << 3 | bit_4 << 2 | bit_2 << 1 | bit_1
         GPIO.cleanup(self.pin_control)
 
-        return bit_1 + (bit_2 * 2) + (bit_4 * 4) + (bit_8 * 8)
+        return curr_value
 
     def __delattr__(self, __name: str) -> None:
         GPIO.cleanup(
