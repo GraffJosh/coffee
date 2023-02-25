@@ -15,6 +15,7 @@ class BCD:
         GPIO.setup(pin_bit_2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.setup(pin_bit_4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.setup(pin_bit_8, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+        GPIO.cleanup(self.pin_control)
 
     def value(self):
         """value reads the value from a BCD counter object
