@@ -8,7 +8,7 @@ class BCD:
         self.pin_bit_2 = pin_bit_2
         self.pin_bit_4 = pin_bit_4
         self.pin_bit_8 = pin_bit_8
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BCM)
 
         GPIO.setup(pin_control, GPIO.OUT)
         GPIO.setup(pin_bit_1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
