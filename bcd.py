@@ -16,13 +16,19 @@ def read_pin(pin_data):
 
 
 class BCD:
-    def __init__(self, pin_bit_1, pin_bit_2, pin_bit_4, pin_bit_8) -> None:
-        self.pin_bit_1 = pin_bit_1
-        self.pin_bit_2 = pin_bit_2
-        self.pin_bit_4 = pin_bit_4
-        self.pin_bit_8 = pin_bit_8
-        GPIO.setmode(GPIO.BCM)
+    def __init__(self, pins=[], pin_bit_1=-1, pin_bit_2=-1, pin_bit_4=-1, pin_bit_8=-1) -> None:
+        if len(pins) == 4:
+            self.pin_bit_1 = pins[0]
+            self.pin_bit_2 = pins[1]
+            self.pin_bit_4 = pins[2]
+            self.pin_bit_8 = pins[3]
+        else:
+            self.pin_bit_1 = pin_bit_1
+            self.pin_bit_2 = pin_bit_2
+            self.pin_bit_4 = pin_bit_4
+            self.pin_bit_8 = pin_bit_8
 
+        GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.pin_bit_1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.pin_bit_2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.pin_bit_4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
