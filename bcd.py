@@ -11,10 +11,10 @@ class BCD:
         GPIO.setmode(GPIO.BOARD)
 
         GPIO.setup(pin_control, GPIO.OUT)
-        GPIO.SETUP(pin_bit_1, GPIO.IN)
-        GPIO.SETUP(pin_bit_2, GPIO.IN)
-        GPIO.SETUP(pin_bit_4, GPIO.IN)
-        GPIO.SETUP(pin_bit_8, GPIO.IN)
+        GPIO.setup(pin_bit_1, GPIO.IN)
+        GPIO.setup(pin_bit_2, GPIO.IN)
+        GPIO.setup(pin_bit_4, GPIO.IN)
+        GPIO.setup(pin_bit_8, GPIO.IN)
 
     def value(self):
         """value reads the value from a BCD counter object
