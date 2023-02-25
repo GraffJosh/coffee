@@ -11,7 +11,7 @@ def read_pin(pin_data):
         int: value high or low given input pin
     """
     # GPIO.setup(pin_control, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    value = GPIO.input(pin_data)
+    value = not GPIO.input(pin_data)
     return value
 
 
@@ -23,10 +23,10 @@ class BCD:
         self.pin_bit_8 = pin_bit_8
         GPIO.setmode(GPIO.BCM)
 
-        GPIO.setup(pin_bit_1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(pin_bit_2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(pin_bit_4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(pin_bit_8, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.pin_bit_1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.pin_bit_2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.pin_bit_4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.pin_bit_8, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     def value(self):
         """value reads the value from a BCD counter object
