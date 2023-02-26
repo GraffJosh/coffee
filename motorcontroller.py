@@ -2,6 +2,8 @@ import RPi.GPIO as GPIO
 
 
 class MotorController:
+    """Motor Controller is a PWM output for motors."""
+
     def __init__(self, motor_pin) -> None:
         self.motor_pin = motor_pin  # PWM pin connected to LED
         GPIO.setwarnings(False)  # disable warnings
