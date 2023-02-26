@@ -1,12 +1,29 @@
-import bcd
+import temperature
+import input_value
+import relay
 
 
-weight_ones = bcd.BCD(pin_bit_1=22, pin_bit_2=27, pin_bit_4=17, pin_bit_8=4)
-weight_tens = bcd.BCD(pin_bit_1=25, pin_bit_2=8, pin_bit_4=7, pin_bit_8=1)
+weight_pins = [[22, 27, 17, 4], [25, 8, 7, 1]]
+temp_pins = [
+    [12, 16, 20, 21],
+    [14, 15, 24, 23],
+    [26, 19],
+]
 
+weight_setting = input_value.InputValue(weight_pins)
+temp_setting = input_value.InputValue(temp_pins)
 
-temp_ones = bcd.BCD(pin_bit_1=12, pin_bit_2=16, pin_bit_4=20, pin_bit_8=21)
-temp_tens = bcd.BCD(pin_bit_1=14, pin_bit_2=15, pin_bit_4=24, pin_bit_8=23)
-temp_hundreds = bcd.BCD(pin_bit_1=26, pin_bit_2=19, pin_bit_4=13, pin_bit_8=6)
-print("Weight Selection: ", weight_tens.value(), weight_ones.value())
-print("Temp Selection: ", temp_hundreds.value(), temp_tens.value(), temp_ones.value())
+curr_temp = temperature.Temperature()
+
+heating_element = relay.Relay(6)
+
+while True:
+    if weight_setting.value() > 5:
+        heating_element.on()
+    else:
+        heating_element.off()
+
+    print("Weight Selection: ", weight_setting.value())
+    print("Temp Selection: ", temp_setting.value())
+    print("temperature: ", curr_temp.value())
+    print("Heating Element: ", heating_element.status())
